@@ -5,18 +5,11 @@ import { LoginComponent } from './login/login.component'
 import { SignupComponent } from './signup/signup.component'
 
 
-@NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: []
-})
-
 
 const AppRoutes: Routes = [
 	{
 		path: '',
-		component:LoginComponent
+		loadChildren:'./login/login.module#LoginModule'
 	},
 	{
 		path: 'signup',
@@ -25,11 +18,14 @@ const AppRoutes: Routes = [
 	
 ];
 
-
 @NgModule({
-	imports: [
-		RouterModule.forRoot(AppRoutes),
-	],
-	exports: [RouterModule],
+  imports: [
+    CommonModule,
+    RouterModule.forRoot(AppRoutes)
+  ],
+  declarations: [],
+  exports:[RouterModule]
+
 })
+
 export class AppRoutingModule { }
